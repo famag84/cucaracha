@@ -15,7 +15,7 @@ function fpol_sup()
 !            fpol_sup = fpol_sup - eps(iR)*avpol(iR)*delta*(dfloat(iR)-0.5)*delta/radio
 !    enddo
         ! Check avpol(iR) expression, here we need rho_pol
-
+! Por compatibilidad con la discretización es necesario poner el jacobiano
         fpol_sup = eps(dimR)*avpol(dimR)/vpol/vsol*delta*(dfloat(dimR)-0.5)*delta/radio
 
     print*, "fpol_sup L16: " , fpol_sup 
