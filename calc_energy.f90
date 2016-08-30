@@ -37,13 +37,14 @@ subroutine calc_energy(pHbulk)
     F_Conf = 0.0
 # if CHAIN != 0 
     F_Conf = fconf_pol() *sigma ! elefante por que quitar el delta/vsol?
+!    F_Conf = fconf_pol() *sigma *delta/vsol ! elefante por que quitar el delta/vsol?
 # endif
     Free_Energy = Free_Energy + F_Conf
 !    print*, "E + F_Fconf" , Free_energy
 
 ! Polymer-Chain Chemical potential inside nanochannel 
 ! If equilibrium it should be equal to std_mupol from bulk.
-    sys_mupol = dlog(sigma*delta) - log_q ! esta expresion no es buena cuando sigma=0
+    sys_mupol = dlog(sigma*vsol) - log_q ! esta expresion no es buena cuando sigma=0 (recordar que sigma tiene unidaes!)
 !    sys_mupol = std_mupol
 
 ! 7. Chemical Equilibria
@@ -104,7 +105,7 @@ enddo
 
 ! Entropía traslacional del polímero
 ! looking on set_pore_distrib.f90:
-!       sigma = exp( std_mupol + log_q )
+!       sigma = exp( std_mupol + log_q ) *delta/vsol
 !old    Free_Energy =  Free_Energy + sigma *(dlog(sigma)-1-std_mupol )
 
 !    Free_Energy =  Free_Energy + sigma*(delta/vsol) *( log_q -1 )
@@ -127,7 +128,8 @@ enddo
 !*******************************************************************
     Free_Energy2 = 0.0
     suma_pong = pong_energy() ! pong_energy(): considera la carga superficial sigmaq
-    Free_Energy2 = suma_pong - F_vdW - sigma*log_q !&
+    Free_Energy2 = suma_pong - F_vdW - log_q *sigma  !&
+    !Free_Energy2 = suma_pong - F_vdW - log_q *sigma*(delta/vsol) !&
 !*********************************************************************************
 ! La siguiente definicion no coincide con la condicion de contorno psi(dimR+1)
 !    Free_Energy2 = Free_Energy2 + sigmaq*zwall*fdiswall*(delta/vsol)*psi(dimR)/2.0 & 

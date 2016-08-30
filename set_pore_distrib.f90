@@ -243,8 +243,9 @@ enddo
 
 #if MUPOL == 1
 ! Para monocapas en superficie interna del nanocanal
-! sigma = exp( std_mupol + log_q )/delta !*(delta/vsol)! Si saco el log_q entonces no tengo que normalizar avpol!
-  sigma = expmupol*delta/vsol*q
+ sigma = exp( std_mupol + log_q ) *(delta/vsol)! Si saco el log_q entonces no tengo que normalizar avpol!
+!  sigma = expmupol*delta/vsol*(q/shift_f/shift)
+!print*, "sigma_estimation: ", sigma, exp( std_mupol + log_q )*delta/vsol
 #endif
 
 do i=1,chaintot ! i enumerate configurations (configurations ensamble)
