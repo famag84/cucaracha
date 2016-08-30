@@ -45,7 +45,7 @@ function fchem_eq()
 
 
 
-
+! Propuesta Mario
       fchem_eq = fchem_eq + ( fdis(i) *dlog( fdis(i)) &
                           + (1-fdis(i))*dlog( (1-fdis(i))*Ka0 ) )  *(avpol(i)/(vpol*vsol)) *delta*(dfloat(i)-0.5)*delta/Radio
       fchem_eq = fchem_eq - (1-fdis(i))*dlog(expmuOHmin) *(avpol(i)/(vpol*vsol)) *delta*(dfloat(i)-0.5)*delta/Radio ! ojo! expmuHplus ya tiene el signo menos!!

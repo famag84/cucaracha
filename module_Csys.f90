@@ -43,7 +43,7 @@ module csys
 !    real(kind=8), dimension(dimR,dimR) :: Xu
     real(kind=16) :: log_q=0 !
 !    real(kind=8) :: norma
-    integer :: infile, iter, npH, ncpol, ncsalt, nsigma, npKa=2, seed=1015 ! ojo! seed cambia a lo largo del programa!
+    integer :: infile, iter, npH, ncpol, ncsalt, nsigma, seed, npKa=2 ! ojo! seed cambia a lo largo del programa!
     integer :: ps_i, flag ! used in check_run subroutine
     integer :: ipH, icsalt, icpol, isigma ! Contador en el main
     ! ps_i : printstate counter

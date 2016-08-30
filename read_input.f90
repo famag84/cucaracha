@@ -65,6 +65,10 @@ subroutine read_input
 
       read(8, *), basura
       read(8, *), movpos, movneg, movHplus, movOHmin, longporo ! [(m^2)*mS/M], longporo in micrometers
+
+      read(8, *), basura
+      read(8, *), seed
+        print*, seed, "<- Seed"
     close(unit=8)
 
 # if CHAIN != 0
