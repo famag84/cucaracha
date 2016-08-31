@@ -44,6 +44,9 @@ subroutine pxs
         enddo
 !         print*, j, pR(10, j)
     enddo
+    ! Pongo la ultima conformacion en el segmento pegado a la pared
+    pR(chaintot,:) = dimR
+    
 #ifdef fdebug_pxs
     print* , "long, cuantas, chaintot: ", long, cuantas, chaintot
 #endif
